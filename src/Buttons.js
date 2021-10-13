@@ -1,9 +1,6 @@
 import React from 'react'
-import Operators from './Operators';
 
-export default function Buttons() {
-
-    const {allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick} = Operators();
+export default function Buttons({allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick}) {
 
     const handleClick = (event) => {
         
