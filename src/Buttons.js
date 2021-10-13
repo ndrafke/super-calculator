@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Buttons({allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick}) {
+export default function Buttons({allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick, moreClick}) {
 
     const handleClick = (event) => {
         
@@ -21,14 +21,15 @@ export default function Buttons({allClear, getResult, operatorClick, zeroClick, 
             break;
           case "1": case "2": case "3": case "4": case "5": case "6": case "7": case "8": case "9": numberClick(val);
           break;
+          case "more": moreClick();
+          break;
           default: allClear();
         }  
       }  
 
     return (
-        <div id="buttons" className="buttons">
+        <div id="buttons" className="buttons">  
         <button id="clear" value="AC" onClick={handleClick}>AC</button>
-
         <button id="divide" value="/" onClick={handleClick} >&#247;</button>
         <button id="seven" value="7" onClick={handleClick}>7</button>
         <button id="eight" value="8" onClick={handleClick}>8</button>
@@ -44,7 +45,8 @@ export default function Buttons({allClear, getResult, operatorClick, zeroClick, 
         <button id="add" value="+" onClick={handleClick}>+</button>
         <button id="zero" value="0" onClick={handleClick}>0</button>
         <button id="decimal" value="." onClick={handleClick}>.</button>
-        <button id="equals" value="=" onClick={handleClick}>=</button>     
+        <button id="equals" value="=" onClick={handleClick}>=</button>
+        <button id="more" value="more" onClick={handleClick}>More</button>     
       </div>
     )
 }

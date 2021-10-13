@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import Display from './Display';
 import Buttons from './Buttons';
+import MoreButtons from './MoreButtons';
 
 function Calculator() {
   const [display, setDisplay] = useState("0");
   const [history, setHistory] = useState("0");
   const [result, setResult] = useState("0");
   const [lastKeyType, setLastKeyType] = useState(null);
+  const [buttons, setButtons] = useState(1)
 
    //AC button 
    const allClear = () => {
@@ -14,7 +16,6 @@ function Calculator() {
     setHistory("0");
     setLastKeyType(null);
     setResult("0");
-    console.log("all clear");
   };
   // equals button 
    const getResult = () => {
@@ -81,7 +82,6 @@ function Calculator() {
 
    const zeroClick = (number) => {
         
-    console.log("zero")
     if(display === "0" && number === "0"){
       setLastKeyType("number")
       setDisplay(number)
@@ -129,7 +129,7 @@ function Calculator() {
    } 
   };
     const numberClick = (number) => {
-    console.log("number")
+    
     if(display.length > 15){ 
         setLastKeyType("number")
         setDisplay(display)
@@ -166,11 +166,63 @@ function Calculator() {
     }
   };
 
+  const moreClick = () => {
+    console.log(buttons)
+    if(buttons === 1){
+      setButtons(2);
+    }
+    else {
+      setButtons(1);
+    }
+  }
+
+  const squareRoot = () => {
+    if(lastKeyType === "result"){
+      let answer = Math.sqrt(result);
+    setDisplay(answer);
+    setHistory("SquareRoot of " + result + " = " + answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+    else{
+    let answer = Math.sqrt(history);
+    setDisplay(answer);
+    setHistory("SquareRoot of " + history + " = " + answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+  }
+
+  const numberSquared = () => {
+    
+    if(lastKeyType === "result"){
+      let answer = Math.pow(result, 2);
+      setDisplay(answer);
+      setHistory(result + "^2 = " + answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else{
+      let answer = Math.pow(history, 2);
+      setDisplay(answer);
+      setHistory(history + "^2 = " + answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+  }
+  const percentClick = () => {
+    let answer = eval(history * .01);
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+  }
+
   return (
     <div>
       <div className="calculator">
       <Display history={history} display={display}/>
-      <Buttons allClear={allClear} getResult={getResult} operatorClick={operatorClick} zeroClick={zeroClick} decimalClick={decimalClick} numberClick={numberClick}/>
+      {buttons === 1 ? <Buttons allClear={allClear} getResult={getResult} operatorClick={operatorClick} zeroClick={zeroClick} decimalClick={decimalClick} numberClick={numberClick} moreClick={moreClick}/> : <MoreButtons allClear={allClear} getResult={getResult} operatorClick={operatorClick} zeroClick={zeroClick} decimalClick={decimalClick} numberClick={numberClick} moreClick={moreClick} squareRoot={squareRoot} numberSquared={numberSquared} percentClick={percentClick} />}
       </div>
     </div>
   );

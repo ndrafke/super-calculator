@@ -68,6 +68,9 @@ button:active {
 #clear {
   width: 210px;
 }
-#equals {
-  width: 140px;
+
+#more {
+  background-color: skyblue;
+  font-size: 0.7rem;
+  color: darkblue;
 }
