@@ -46,7 +46,7 @@ export default function Buttons({allClear, getResult, operatorClick, zeroClick, 
         <button id="zero" value="0" onClick={handleClick}>0</button>
         <button id="decimal" value="." onClick={handleClick}>.</button>
         <button id="equals" value="=" onClick={handleClick}>=</button>
-        <button id="more" value="more" onClick={handleClick}>More</button>     
+        <button id="more" className="button-switch" value="more" onClick={handleClick}>More</button>     
       </div>
     )
 }

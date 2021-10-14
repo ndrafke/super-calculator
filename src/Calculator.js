@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Display from './Display';
 import Buttons from './Buttons';
 import MoreButtons from './MoreButtons';
+import EvenMoreButtons from './EvenMoreButtons';
 
 function Calculator() {
   const [display, setDisplay] = useState("0");
@@ -19,11 +20,19 @@ function Calculator() {
   };
   // equals button 
    const getResult = () => {
+     if(lastKeyType === "result"){
+       setDisplay(display);
+       setHistory(history);
+       setLastKeyType("result");
+       setResult(result)
+     }
+     else{
     let answer = Math.round(1000000000000 * eval(history)) / 1000000000000;
       setDisplay(answer);
       setHistory(history + "=" + answer);
       setLastKeyType("result");
       setResult(answer);
+     }
   };
  //operators
    const operatorClick = (operator) => {
@@ -101,7 +110,7 @@ function Calculator() {
         setHistory(history + number)
     } 
   };
-    const decimalClick = (number) => {
+  const decimalClick = (number) => {
    
      if(number === "." && display === "0"){
         setLastKeyType("number")
@@ -167,12 +176,22 @@ function Calculator() {
   };
 
   const moreClick = () => {
-    console.log(buttons)
+    setLastKeyType(lastKeyType);
     if(buttons === 1){
       setButtons(2);
     }
-    else {
+    else if(buttons === 2){
+      setButtons(3);
+    }
+  }
+
+  const backClick = () => {
+    setLastKeyType(lastKeyType);
+    if(buttons === 2){
       setButtons(1);
+    }
+    else if(buttons === 3){
+      setButtons(2);
     }
   }
 
@@ -202,7 +221,7 @@ function Calculator() {
       setLastKeyType("result");
       setResult(answer);
     }
-    else{
+    else if(lastKeyType === "number"){
       let answer = Math.pow(history, 2);
       setDisplay(answer);
       setHistory(history + "^2 = " + answer);
@@ -211,18 +230,104 @@ function Calculator() {
     }
   }
   const percentClick = () => {
+    if(lastKeyType === "result"){
+      let answer = eval(result * .01);
+      setDisplay(answer);
+      setHistory(answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else if(lastKeyType === "number"){
     let answer = eval(history * .01);
     setDisplay(answer);
     setHistory(answer);
     setLastKeyType("result");
     setResult(answer);
+    }
+  }
+
+const halfClick = () => {
+  if(lastKeyType === "result"){
+    let answer = eval(result / 2);
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+  }
+  else if(lastKeyType === "number"){
+    let answer = eval(history / 2);
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+  }
+}
+
+  const factorialize = () => {
+    if(lastKeyType === "result"){
+      let answer = 1;
+      for(let i = 1; i <= result; i++){
+        answer *= i
+      }
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+    else if(lastKeyType === "number"){
+      let answer = 1;
+      for(let i = 1; i <= history; i++){
+        answer *= i
+      }
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
   }
 
   return (
     <div>
       <div className="calculator">
       <Display history={history} display={display}/>
-      {buttons === 1 ? <Buttons allClear={allClear} getResult={getResult} operatorClick={operatorClick} zeroClick={zeroClick} decimalClick={decimalClick} numberClick={numberClick} moreClick={moreClick}/> : <MoreButtons allClear={allClear} getResult={getResult} operatorClick={operatorClick} zeroClick={zeroClick} decimalClick={decimalClick} numberClick={numberClick} moreClick={moreClick} squareRoot={squareRoot} numberSquared={numberSquared} percentClick={percentClick} />}
+      {buttons === 1 ? 
+      <Buttons 
+      allClear={allClear} 
+      getResult={getResult} 
+      operatorClick={operatorClick} 
+      zeroClick={zeroClick} 
+      decimalClick={decimalClick} 
+      numberClick={numberClick} 
+      moreClick={moreClick}/> : buttons === 2 ?
+      <MoreButtons 
+      allClear={allClear} 
+      getResult={getResult} 
+      operatorClick={operatorClick} 
+      zeroClick={zeroClick} 
+      decimalClick={decimalClick} 
+      numberClick={numberClick} 
+      moreClick={moreClick}
+      backClick={backClick} 
+      squareRoot={squareRoot} 
+      numberSquared={numberSquared} 
+      percentClick={percentClick}
+      halfClick={halfClick}
+      /> : 
+      <EvenMoreButtons 
+      allClear={allClear} 
+      getResult={getResult} 
+      operatorClick={operatorClick} 
+      zeroClick={zeroClick} 
+      decimalClick={decimalClick} 
+      numberClick={numberClick} 
+      moreClick={moreClick} 
+      backClick={backClick}
+      squareRoot={squareRoot} 
+      numberSquared={numberSquared} 
+      percentClick={percentClick}
+      factorialize={factorialize}
+      />
+      }
       </div>
     </div>
   );

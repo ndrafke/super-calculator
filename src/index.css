@@ -55,7 +55,7 @@ button {
   font-family: futura;
 }
 button:active {
-  transform: scale(0.95);
+  transform: scale(0.99);
 }
 .buttons {
   margin: 5px;
@@ -68,8 +68,11 @@ button:active {
 #clear {
   width: 210px;
 }
+#more-clear {
+  width: 140px;
+}
 
-#more {
+.button-switch {
   background-color: skyblue;
   font-size: 0.7rem;
   color: darkblue;
