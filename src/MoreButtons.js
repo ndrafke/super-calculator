@@ -34,16 +34,16 @@ export default function MoreButtons({allClear, getResult, zeroClick, decimalClic
     return (
         <div id="buttons" className="buttons">
         <button id="more-clear" value="AC" onClick={buttonClick}>AC</button>
-        <button id="sqrt" value="sqrt" onClick={buttonClick} >&#8730;</button>
-        <button id="squared" value="squared" onClick={buttonClick}>x^2</button>
+        <button id="sqrt" className="smaller-text" value="sqrt" onClick={buttonClick} >&#8730;</button>
+        <button id="squared" className="smaller-text" value="squared" onClick={buttonClick}>x^2</button>
         <button id="seven" value="7" onClick={buttonClick}>7</button>
         <button id="eight" value="8" onClick={buttonClick}>8</button>
         <button id="nine" value="9" onClick={buttonClick}>9</button>
-        <button id="percent" value="%" onClick={buttonClick}>%</button>
+        <button id="percent" className="smaller-text" value="%" onClick={buttonClick}>%</button>
         <button id="four" value="4" onClick={buttonClick}>4</button>
         <button id="five" value="5" onClick={buttonClick}>5</button>
         <button id="six" value="6" onClick={buttonClick}>6</button>
-        <button id="half" value="half" onClick={buttonClick}>1/2</button>
+        <button id="half" className="smaller-text" value="half" onClick={buttonClick}>1/2</button>
         <button id="one" value="1" onClick={buttonClick}>1</button>
         <button id="two" value="2" onClick={buttonClick}>2</button>
         <button id="three" value="3" onClick={buttonClick}>3</button>

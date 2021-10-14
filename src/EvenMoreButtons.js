@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EvenMoreButtons({allClear, getResult, zeroClick, decimalClick, numberClick, moreClick, backClick, squareRoot, numberSquared, percentClick, factorialize}) {
+export default function EvenMoreButtons({allClear, getResult, zeroClick, decimalClick, numberClick, moreClick, backClick, squareRoot, numberSquared, isPrime, factorialize}) {
 
     const moreButtonClick = (event) => {
         
@@ -14,7 +14,7 @@ export default function EvenMoreButtons({allClear, getResult, zeroClick, decimal
           break;
           case "sqrt": squareRoot();
             break;
-          case "%": percentClick();
+          case "prime": isPrime();
             break;
             case "factorial": factorialize();
             break;
@@ -40,11 +40,11 @@ export default function EvenMoreButtons({allClear, getResult, zeroClick, decimal
         <button id="seven" value="7" onClick={moreButtonClick}>7</button>
         <button id="eight" value="8" onClick={moreButtonClick}>8</button>
         <button id="nine" value="9" onClick={moreButtonClick}>9</button>
-        <button id="percent" value="%" onClick={moreButtonClick}>%</button>
+        <button id="prime" style={{fontSize: "1rem"}} value="prime" onClick={moreButtonClick}>prime?</button>
         <button id="four" value="4" onClick={moreButtonClick}>4</button>
         <button id="five" value="5" onClick={moreButtonClick}>5</button>
         <button id="six" value="6" onClick={moreButtonClick}>6</button>
-        <button id="factorial" value="factorial" onClick={moreButtonClick}>n!</button>
+        <button id="factorial" className="smaller-text" value="factorial" onClick={moreButtonClick}>n!</button>
         <button id="one" value="1" onClick={moreButtonClick}>1</button>
         <button id="two" value="2" onClick={moreButtonClick}>2</button>
         <button id="three" value="3" onClick={moreButtonClick}>3</button>

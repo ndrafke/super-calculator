@@ -286,6 +286,62 @@ const halfClick = () => {
     }
   }
 
+  const isPrime = () => {
+    
+    if(lastKeyType === "result"){
+      if(+result === 2){
+        setHistory(result + ": is a prime number")
+        return
+      }
+      else if(+result < 2){
+        setHistory(history + ": not a prime number")
+        return
+      }
+      else if(!Number.isInteger(+result)){
+        console.log("not an integer")
+        setHistory("Only Integers can be prime")
+        return
+      }
+      for(let i = 2; i < +result; i++){
+        console.log(i);
+        console.log(+result % i !== 0);
+        if(+result % i === 0){
+          console.log(true);
+          setHistory(result + ": not a prime number");
+          return
+        }
+          setHistory(result + ": is a prime number") 
+      } 
+      
+    }
+    else if(lastKeyType === "number"){
+      
+      if(+history === 2){
+        setHistory(history + ": is a prime number")
+        return
+      }
+      else if(+history < 2){
+        setHistory(history + ": not a prime number")
+        return
+      }
+      else if(!Number.isInteger(+history)){
+        console.log("not an integer")
+        setHistory("Only Integers can be prime")
+        return
+      }
+      for(let i = 2; i < +history; i++){
+        console.log(i);
+        console.log(+history % i !== 0);
+        if(+history % i === 0){
+          console.log(true);
+          setHistory(history + ": not a prime number");
+          return
+        }
+          setHistory(history + ": is a prime number") 
+      } 
+    }
+  }
+
   return (
     <div>
       <div className="calculator">
@@ -324,7 +380,7 @@ const halfClick = () => {
       backClick={backClick}
       squareRoot={squareRoot} 
       numberSquared={numberSquared} 
-      percentClick={percentClick}
+      isPrime={isPrime}
       factorialize={factorialize}
       />
       }

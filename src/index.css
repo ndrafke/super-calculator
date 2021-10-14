@@ -71,7 +71,9 @@ button:active {
 #more-clear {
   width: 140px;
 }
-
+.smaller-text {
+  font-size: 1.5rem;
+}
 .button-switch {
   background-color: skyblue;
   font-size: 0.7rem;
