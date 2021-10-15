@@ -1,10 +1,8 @@
 import React from 'react';
 
-
-
 export default function Display({display, history}) {
    
-
+  //Display screen for calculator:
     return (
         <div>
          
@@ -12,8 +10,8 @@ export default function Display({display, history}) {
         <div id="history" className="history">
           {history}
         </div>
-  <div id="display" className="display">
-    {display}
+      <div id="display" className="display">
+          {display}
         </div>
         </div>
       

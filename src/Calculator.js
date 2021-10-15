@@ -36,7 +36,7 @@ function Calculator() {
   };
  //operators
    const operatorClick = (operator) => {
-  
+    //regexes for handling operators:
     const endsWithTwoOperators = /[*+-/]{1}[*+-/]{1}$/;
     const operatorAndMinus = /[*+-/]{1}-{1}$/;
     const endsWithDoubleMinus = /- -$/;    
@@ -290,16 +290,16 @@ const halfClick = () => {
     
     if(lastKeyType === "result"){
       if(+result === 2){
-        setHistory(result + ": is a prime number")
+        setDisplay(result + ": is a prime number")
         return
       }
       else if(+result < 2){
-        setHistory(history + ": not a prime number")
+        setDisplay(history + ": not a prime number")
         return
       }
       else if(!Number.isInteger(+result)){
         console.log("not an integer")
-        setHistory("Only Integers can be prime")
+        setDisplay("Only Integers can be prime")
         return
       }
       for(let i = 2; i < +result; i++){
@@ -307,26 +307,29 @@ const halfClick = () => {
         console.log(+result % i !== 0);
         if(+result % i === 0){
           console.log(true);
-          setHistory(result + ": not a prime number");
+          setDisplay(result + ": not a prime number");
           return
         }
-          setHistory(result + ": is a prime number") 
+          setDisplay(result + ": is a prime number") 
       } 
       
     }
     else if(lastKeyType === "number"){
       
       if(+history === 2){
-        setHistory(history + ": is a prime number")
+        setDisplay(history + ": is a prime number");
+        setLastKeyType("result");
         return
       }
       else if(+history < 2){
-        setHistory(history + ": not a prime number")
+        setDisplay(history + ": not a prime number");
+        setLastKeyType("result");
         return
       }
       else if(!Number.isInteger(+history)){
         console.log("not an integer")
-        setHistory("Only Integers can be prime")
+        setDisplay("Only Integers can be prime");
+        setLastKeyType("result");
         return
       }
       for(let i = 2; i < +history; i++){
@@ -334,10 +337,12 @@ const halfClick = () => {
         console.log(+history % i !== 0);
         if(+history % i === 0){
           console.log(true);
-          setHistory(history + ": not a prime number");
+          setDisplay(history + ": not a prime number");
+          setLastKeyType("result");
           return
         }
-          setHistory(history + ": is a prime number") 
+          setDisplay(history + ": is a prime number");
+          setLastKeyType("result"); 
       } 
     }
   }
