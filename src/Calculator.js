@@ -246,6 +246,74 @@ function Calculator() {
     }
   }
 
+  const tenPercent = () => {
+    if(lastKeyType === "result"){
+      let answer = Math.round(1000000000000 * eval(result * .10)) / 1000000000000;
+      setDisplay(answer);
+      setHistory(answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else if(lastKeyType === "number"){
+      let answer = Math.round(1000000000000 * eval(history * .10)) / 1000000000000;
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+  }
+
+  const fifteenPercent = () => {
+    if(lastKeyType === "result"){
+      let answer = Math.round(1000000000000 * eval(result * .15)) / 1000000000000;
+      setDisplay(answer);
+      setHistory(answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else if(lastKeyType === "number"){
+      let answer = Math.round(1000000000000 * eval(history * .15)) / 1000000000000;
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+  }
+
+  const twentyPercent = () => {
+    if(lastKeyType === "result"){
+      let answer = Math.round(1000000000000 * eval(result * .20)) / 1000000000000;
+      setDisplay(answer);
+      setHistory(answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else if(lastKeyType === "number"){
+      let answer = Math.round(1000000000000 * eval(history * .20)) / 1000000000000;
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+  }
+
+  const twentyFivePercent = () => {
+    if(lastKeyType === "result"){
+      let answer = Math.round(1000000000000 * eval(result * .25)) / 1000000000000;
+      setDisplay(answer);
+      setHistory(answer);
+      setLastKeyType("result");
+      setResult(answer);
+    }
+    else if(lastKeyType === "number"){
+      let answer = Math.round(1000000000000 * eval(history * .25)) / 1000000000000;
+    setDisplay(answer);
+    setHistory(answer);
+    setLastKeyType("result");
+    setResult(answer);
+    }
+  }
+
 const halfClick = () => {
   if(lastKeyType === "result"){
     let answer = eval(result / 2);
@@ -318,17 +386,20 @@ const halfClick = () => {
       
       if(+history === 2){
         setDisplay(history + ": is a prime number");
+        setResult(history);
         setLastKeyType("result");
         return
       }
       else if(+history < 2){
         setDisplay(history + ": not a prime number");
+        setResult(history);
         setLastKeyType("result");
         return
       }
       else if(!Number.isInteger(+history)){
         console.log("not an integer")
         setDisplay("Only Integers can be prime");
+        setResult(history);
         setLastKeyType("result");
         return
       }
@@ -338,10 +409,12 @@ const halfClick = () => {
         if(+history % i === 0){
           console.log(true);
           setDisplay(history + ": not a prime number");
+          setResult(history)
           setLastKeyType("result");
           return
         }
           setDisplay(history + ": is a prime number");
+          setResult(history)
           setLastKeyType("result"); 
       } 
     }
@@ -359,6 +432,7 @@ const halfClick = () => {
       zeroClick={zeroClick} 
       decimalClick={decimalClick} 
       numberClick={numberClick} 
+      percentClick={percentClick}
       moreClick={moreClick}/> : buttons === 2 ?
       <MoreButtons 
       allClear={allClear} 
@@ -369,10 +443,11 @@ const halfClick = () => {
       numberClick={numberClick} 
       moreClick={moreClick}
       backClick={backClick} 
-      squareRoot={squareRoot} 
-      numberSquared={numberSquared} 
-      percentClick={percentClick}
-      halfClick={halfClick}
+      tenPercent={tenPercent}
+      fifteenPercent={fifteenPercent}
+      twentyPercent={twentyPercent}
+      twentyFivePercent={twentyFivePercent}
+      
       /> : 
       <EvenMoreButtons 
       allClear={allClear} 
@@ -381,12 +456,12 @@ const halfClick = () => {
       zeroClick={zeroClick} 
       decimalClick={decimalClick} 
       numberClick={numberClick} 
-      moreClick={moreClick} 
       backClick={backClick}
       squareRoot={squareRoot} 
       numberSquared={numberSquared} 
       isPrime={isPrime}
       factorialize={factorialize}
+      halfClick={halfClick}
       />
       }
       </div>

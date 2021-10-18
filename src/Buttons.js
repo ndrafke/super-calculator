@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Buttons({allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick, moreClick}) {
+export default function Buttons({allClear, getResult, operatorClick, zeroClick, decimalClick, numberClick, percentClick, moreClick}) {
 
     const handleClick = (event) => {
         
@@ -10,6 +10,8 @@ export default function Buttons({allClear, getResult, operatorClick, zeroClick, 
             break;
           case "=": getResult();
             break;
+          case "%": percentClick();
+            break;  
           case "+":
           case "-":
           case "*":
@@ -30,6 +32,7 @@ export default function Buttons({allClear, getResult, operatorClick, zeroClick, 
     return (
         <div id="buttons" className="buttons">  
         <button id="clear" value="AC" onClick={handleClick}>AC</button>
+        <button id="percent" className="smaller-text" value="%" onClick={handleClick}>%</button>
         <button id="divide" value="/" onClick={handleClick} >&#247;</button>
         <button id="seven" value="7" onClick={handleClick}>7</button>
         <button id="eight" value="8" onClick={handleClick}>8</button>

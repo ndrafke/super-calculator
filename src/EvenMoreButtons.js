@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EvenMoreButtons({allClear, getResult, zeroClick, decimalClick, numberClick, moreClick, backClick, squareRoot, numberSquared, isPrime, factorialize}) {
+export default function EvenMoreButtons({allClear, getResult, zeroClick, decimalClick, numberClick, moreClick, backClick, squareRoot, numberSquared, isPrime, factorialize, halfClick}) {
 
     const moreButtonClick = (event) => {
         
@@ -16,8 +16,10 @@ export default function EvenMoreButtons({allClear, getResult, zeroClick, decimal
             break;
           case "prime": isPrime();
             break;
-            case "factorial": factorialize();
+          case "factorial": factorialize();
             break;
+          case "half": halfClick();
+          break;  
           case "0": zeroClick(val);
             break;
           case ".": decimalClick(val);
@@ -34,9 +36,9 @@ export default function EvenMoreButtons({allClear, getResult, zeroClick, decimal
 
     return (
         <div id="buttons" className="buttons">
-        <button id="more-clear" value="AC" onClick={moreButtonClick}>AC</button>
-        <button id="sqrt" value="sqrt" onClick={moreButtonClick} >&#8730;</button>
-        <button id="squared" value="squared" onClick={moreButtonClick}>x^2</button>
+        <button id="clear" value="AC" onClick={moreButtonClick}>AC</button>
+        <button id="sqrt" value="sqrt" className="smaller-text" onClick={moreButtonClick} >&#8730;</button>
+        <button id="squared" value="squared" className="smaller-text" onClick={moreButtonClick}>x^2</button>
         <button id="seven" value="7" onClick={moreButtonClick}>7</button>
         <button id="eight" value="8" onClick={moreButtonClick}>8</button>
         <button id="nine" value="9" onClick={moreButtonClick}>9</button>
@@ -48,11 +50,11 @@ export default function EvenMoreButtons({allClear, getResult, zeroClick, decimal
         <button id="one" value="1" onClick={moreButtonClick}>1</button>
         <button id="two" value="2" onClick={moreButtonClick}>2</button>
         <button id="three" value="3" onClick={moreButtonClick}>3</button>
-        <button id="back" className="button-switch" value="back" onClick={moreButtonClick}>Back</button>
+        <button id="half" className="smaller-text" value="half" onClick={moreButtonClick}>1/2</button>
         <button id="zero" value="0" onClick={moreButtonClick}>0</button>
         <button id="decimal" value="." onClick={moreButtonClick}>.</button>
         <button id="equals" value="=" onClick={moreButtonClick}>=</button>
-        <button id="more" className="button-switch" value="more" onClick={moreButtonClick}>More</button>
+        <button id="back" className="button-switch" value="back" onClick={moreButtonClick}>Back</button>
         </div>
     )
 }
