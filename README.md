@@ -8,6 +8,6 @@ To run this application:
 2. cd into the rep folder and type: 'npm install'
 3. To run the project type: 'npm start'
 
-[See live app on Netlify!](https://neat-calculator.app/)
+[See live app on Netlify!](https://neat-calculator.netlify.app/)
 
 ![Neat Calculator Screenshot](https://i.imgur.com/wZLqRIj.png)
